@@ -156,7 +156,7 @@ class CarState(CarStateBase, MadsCarState):
       cp.vl["EngBrakeData"]
       ["CcStat_D_Actl"] in (1, 2)
     )
-      if not self.CP.openpilotLongitudinalControl:
+    if not self.CP.openpilotLongitudinalControl:
       ret.accFaulted = (
         ret.accFaulted or
         cp_cam.vl["ACCDATA"]["CmbbDeny_B_Actl"] == 1
