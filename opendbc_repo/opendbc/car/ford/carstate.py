@@ -300,7 +300,7 @@ class CarState(CarStateBase, MadsCarState):
 
     return ret, ret_sp
     @staticmethod
-  def get_can_parsers(CP, CP_SP):
+    def get_can_parsers(CP, CP_SP):
     pt_messages = []
     #
     # Basic powertrain messages
