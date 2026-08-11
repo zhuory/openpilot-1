@@ -297,30 +297,25 @@ class CarState(CarStateBase, MadsCarState):
         }
       ),
     ]
-
     return ret, ret_sp
     @staticmethod
-  def get_can_parsers(CP, CP_SP):
-    pt_messages = []
-    #
-    # Basic powertrain messages
-    #
-    pt_messages += [
-      ("BrakeSysFeatures", 50),
-      ("Yaw_Data_FD1", 100),
-      ("DesiredTorqBrk", 50),
-      ("EngVehicleSpThrottle", 100),
-      ("EngBrakeData", 10),
-      ("Cluster_Info1_FD1", 10),
-      ("EPAS_INFO", 50),
-      ("Steering_Data_FD1", 10),
-      ("BodyInfo_3_FD1", 2),
-      ("RCMStatusMessage2_FD1", 10),
-      ("BCM_Lamp_Stat_FD1", float('nan')),
-    ]
-    #
-    # Steering angle
-    #
+    def get_can_parsers(CP, CP_SP):
+        pt_messages = []
+    
+        pt_messages += [
+          ("BrakeSysFeatures", 50),
+          ("Yaw_Data_FD1", 100),
+          ("DesiredTorqBrk", 50),
+          ("EngVehicleSpThrottle", 100),
+          ("EngBrakeData", 10),
+          ("Cluster_Info1_FD1", 10),
+          ("EPAS_INFO", 50),
+          ("Steering_Data_FD1", 10),
+          ("BodyInfo_3_FD1", 2),
+          ("RCMStatusMessage2_FD1", 10),
+          ("BCM_Lamp_Stat_FD1", float('nan')),
+        ]
+    
     if CP.flags & FordFlags.ALT_STEER_ANGLE:
       pt_messages += [
         ("SteeringPinion_Data_Alt", 100),
@@ -330,9 +325,7 @@ class CarState(CarStateBase, MadsCarState):
       pt_messages += [
         ("SteeringPinion_Data", 100),
       ]
-    #
-    # Transmission
-    #
+   
     if CP.transmissionType == TransmissionType.automatic:
       if CP.flags & FordFlags.ALT_STEER_ANGLE:
         pt_messages += [
